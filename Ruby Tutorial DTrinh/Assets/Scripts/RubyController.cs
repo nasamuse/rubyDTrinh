@@ -102,7 +102,7 @@ public class RubyController : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
-
+            GameObject damagePart = Instantiate(damagePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
             PlaySound(hitSound);
         }
 
