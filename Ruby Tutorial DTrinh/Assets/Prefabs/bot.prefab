@@ -151,8 +151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   vertical: 0
+  megabot: 0
   changeTime: 3
   smokeEffect: {fileID: 3897118217660288610}
+  runningSound: {fileID: 8300000, guid: 6bfbad8ffdf387d4e87e8fa07b62f7c1, type: 3}
 --- !u!95 &-8053907593498906393
 Animator:
   serializedVersion: 5

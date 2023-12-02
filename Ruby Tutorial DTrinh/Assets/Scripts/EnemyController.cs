@@ -6,25 +6,28 @@ public class EnemyController : MonoBehaviour
 {
     public float speed;
     public bool vertical;
+    public bool megabot;
     public float changeTime = 3.0f;
-
+    int toughHealth = 2;
     public ParticleSystem smokeEffect;
-
+    AudioSource audioMaster;
+    public AudioClip runningSound;
     Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
     bool broken = true;
-
+    
     Animator animator;
     // Start is called before the first frame update
     private RubyController rubyController; // this line of code creates a variable called "rubyController" to store information about the RubyController script!
 
         void Start()
     {
+        audioMaster = GetComponent<AudioSource>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
-        
+        audioMaster.Play();
 
         GameObject rubyControllerObject = GameObject.FindWithTag("RubyController"); //this line of code finds the RubyController script by looking for a "RubyController" tag on Ruby
 
@@ -103,18 +106,46 @@ public class EnemyController : MonoBehaviour
     //Public because we want to call it from elsewhere like the projectile script
     public void Fix()
     {
-        broken = false;
-        rigidbody2D.simulated = false;
-        //optional if you added the fixed animation
-        animator.SetTrigger("Fixed");
+        //finds out if dealing with megabot
+        if(megabot == true)
+        {
+            if(toughHealth <= 0)
+            {
+                broken = false;
+                rigidbody2D.simulated = false;
+                //optional if you added the fixed animation
+                animator.SetTrigger("Fixed");
 
-        smokeEffect.Stop();
-        
-        //robot counter update
+                smokeEffect.Stop();
+                audioMaster.Stop();
 
-        rubyController.numFixedRobots = rubyController.numFixedRobots + 1;
-        Debug.Log("Rubycontroller num = " + rubyController.numFixedRobots);
-        rubyController.ChangeScore(rubyController.numFixedRobots);
+                //robot counter update
+
+                rubyController.numFixedRobots = rubyController.numFixedRobots + 1;
+                Debug.Log("Rubycontroller num = " + rubyController.numFixedRobots);
+                rubyController.ChangeScore(rubyController.numFixedRobots);
+            }
+            else
+            {
+                toughHealth = --toughHealth;
+            }
+        }
+        if (megabot == false)
+        {
+            broken = false;
+            rigidbody2D.simulated = false;
+            //optional if you added the fixed animation
+            animator.SetTrigger("Fixed");
+
+            smokeEffect.Stop();
+            audioMaster.Stop();
+
+            //robot counter update
+
+            rubyController.numFixedRobots = rubyController.numFixedRobots + 1;
+            Debug.Log("Rubycontroller num = " + rubyController.numFixedRobots);
+            rubyController.ChangeScore(rubyController.numFixedRobots);
+        }
     
     }
 }

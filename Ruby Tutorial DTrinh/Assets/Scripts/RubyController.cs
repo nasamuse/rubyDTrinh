@@ -143,9 +143,9 @@ public class RubyController : MonoBehaviour
         numFixedRobots = scoreAmount;
         
         UIRobotCounter.instance.updateCounter(numFixedRobots);
-        if (numFixedRobots == 3)
+        if (numFixedRobots == 4)
         {
-            EndGame(3);
+            EndGame(4);
         }
     }
 
