@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// The coding is done by Dan Trinh
 public class RubyController : MonoBehaviour
 {
     public float speed = 3.0f;
@@ -15,10 +16,14 @@ public class RubyController : MonoBehaviour
 
     public AudioClip cogThrowClip;
     public AudioClip hitSound;
+    public AudioClip winSFX;
+    public AudioClip loseSFX;
 
     public int health { get { return currentHealth; } }
     int currentHealth;
     bool gameOver = false;
+    // This stops the Lose SFX from repeating
+    bool stopLoseSFXRepeat = false;
 
     public float timeInvincible = 2.0f;
     bool isInvincible;
@@ -37,6 +42,7 @@ public class RubyController : MonoBehaviour
 
     
     public int numFixedRobots;
+    public int numMice;
     //public GameObject gameOverText;
     //public TMP_Text gameOverText;
     public Text gameOverText;
@@ -47,6 +53,7 @@ public class RubyController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         numFixedRobots = 0;
+        numMice = 0;
         currentHealth = maxHealth;
         gameOverText.text = "";
         audioSource = GetComponent<AudioSource>();
@@ -132,7 +139,7 @@ public class RubyController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && stopLoseSFXRepeat == false)
         {
             EndGame(currentHealth);
         }
@@ -143,10 +150,17 @@ public class RubyController : MonoBehaviour
         numFixedRobots = scoreAmount;
         
         UIRobotCounter.instance.updateCounter(numFixedRobots);
-        if (numFixedRobots == 4)
+        if (numFixedRobots == 4 && numMice == 3)
         {
             EndGame(4);
         }
+    }
+    //Mouse Collectible Version of the Robot Counter
+    public void ChangeMouseNum(int mice)
+    {
+        numMice = mice;
+        MiceCollectible.instance.updateCounter(numMice);
+        ChangeScore(numFixedRobots);
     }
 
     public void EndGame(int healthAmount)
@@ -157,17 +171,20 @@ public class RubyController : MonoBehaviour
             //call lose screen method
             Debug.Log("Lose screen");
             LoseScreen();
+            stopLoseSFXRepeat = true;
         }
         else
         {
             //call win screen method
             Debug.Log("Win screen");
+            PlaySound(winSFX);
             WinScreen();
         }
     }
     public void LoseScreen()
     {
         gameOverText.text = "You lost! Press R to restart";
+        PlaySound(loseSFX);
         speed = 0;
         gameOver = true;
     }

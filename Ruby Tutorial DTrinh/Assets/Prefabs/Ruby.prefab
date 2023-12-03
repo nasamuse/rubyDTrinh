@@ -108,10 +108,14 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6958925273145936872, guid: 57405437ae6763e4da9398b2800efa98, type: 3}
   cogThrowClip: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
   hitSound: {fileID: 8300000, guid: 9b1bb1f450b7d444fa4a8019d13519a7, type: 3}
+  winSFX: {fileID: 8300000, guid: 2366aa78b67217744bfbf2860006e896, type: 3}
+  loseSFX: {fileID: 8300000, guid: 0b88cb33cf0c01842b34943790853b4b, type: 3}
   timeInvincible: 2
   healthParticle: {fileID: 7414126673306029767}
   hitParticle: {fileID: 7138125787108724096}
   numFixedRobots: 0
+  numMice: 0
+  gameOverText: {fileID: 0}
 --- !u!50 &6832504303875440809
 Rigidbody2D:
   serializedVersion: 4
