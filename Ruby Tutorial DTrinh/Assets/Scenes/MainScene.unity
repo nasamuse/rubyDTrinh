@@ -40284,7 +40284,7 @@ PrefabInstance:
     - target: {fileID: -417836049398164261, guid: c2d588e74f97f214d9d858e49660d0aa, type: 3}
       propertyPath: dialogueSFX
       value: 
-      objectReference: {fileID: 8300000, guid: b17b44b8c83e00d43b538c7286f054a4, type: 3}
+      objectReference: {fileID: 8300000, guid: a79150facc21281438653604b0d34e2a, type: 3}
     - target: {fileID: 2823605036258569450, guid: c2d588e74f97f214d9d858e49660d0aa, type: 3}
       propertyPath: m_RootOrder
       value: 50
@@ -40340,7 +40340,7 @@ PrefabInstance:
     - target: {fileID: 8005767630816813528, guid: c2d588e74f97f214d9d858e49660d0aa, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: b17b44b8c83e00d43b538c7286f054a4, type: 3}
+      objectReference: {fileID: 8300000, guid: a79150facc21281438653604b0d34e2a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d588e74f97f214d9d858e49660d0aa, type: 3}
 --- !u!1001 &8715197928605666512

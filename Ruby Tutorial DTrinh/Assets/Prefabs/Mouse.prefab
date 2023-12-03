@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 116918963852833365}
   - component: {fileID: -4121489191692533671}
   - component: {fileID: -4399194546445202316}
+  - component: {fileID: 1214418250}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af33552032628444bfac4283037bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedClip: {fileID: 8300000, guid: af5f8b64e3f58f24c87ff8f789b04f6c, type: 3}
+  collectedClip: {fileID: 8300000, guid: 4d5b3dd5afd52e4469b7b4f460f59479, type: 3}
   miceCounterText: {fileID: 0}
 --- !u!61 &-4399194546445202316
 BoxCollider2D:
@@ -126,3 +127,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.548}
   m_EdgeRadius: 0
+--- !u!95 &1214418250
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595977943385422393}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 632857946323ab74fb12e8644a207037, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
